@@ -3,34 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bufferedByte;
+package MVC;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Feri Winarta
  */
-import java.io.*;
 public class Main {
-    public static void main(String[] args)throws IOException {
-        FileInputStream inputFile = new FileInputStream("input.txt");
-        BufferedInputStream bufferedFile = new BufferedInputStream(inputFile);
-//        Membaca ke console
-        byte[] dataArray = bufferedFile.readAllBytes();
-        String data = new String(dataArray);
-        System.out.println(data);
+    public static void main(String[] args) {
+        // list dosen
+        List<DosenModel> dataDosen = new ArrayList<>();
+        dataDosen.add(new DosenModel("Hermawan", "2020100041"));
+        dataDosen.add(new DosenModel("Joko", "2020100042"));
+        dataDosen.add(new DosenModel("Anwar", "2020100043"));
+        dataDosen.add(new DosenModel("Harisa", "2020100044"));
+        dataDosen.add(new DosenModel("Axin", "2020100045"));
         
-        inputFile.close();
-        bufferedFile.close();
+        // controller
+        DosenController controller = new DosenController(dataDosen);
         
-//        Menulis ke output File
-//        Menulis file menggunakan buffered byte harus menyertakan .flush()
-        FileOutputStream out = new FileOutputStream("outpu22.txt");
-        BufferedOutputStream bufferedOut = new BufferedOutputStream(out);
-        bufferedOut.write(dataArray,0,dataArray.length);
-        bufferedOut.flush();
+        // view
+        controller.updateView();
         
         
+//        controller.tambahDosen(joko);
+//        controller.updateView();
+//        controller.setNamaDosen("Joko");
+//        controller.setNip("20201000042");
+//        controller.updateView();
         
-
+        
+        
+        
+        
     }
 }
